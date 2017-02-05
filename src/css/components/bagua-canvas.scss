@@ -1,0 +1,26 @@
+@import '../variables/palette';
+
+@mixin bagua-canvas-container {
+  width: 800px;
+  height: 600px;
+  position: relative;
+
+  canvas {
+    position: absolute;
+  }
+
+  .overlay {
+    position: absolute;
+    height: 600px;
+    width: 800px;
+    background-color: transparent;
+    z-index: 1;
+    img {
+      margin-left: -5px;
+      margin-top: -5px;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+    }
+  }
+}

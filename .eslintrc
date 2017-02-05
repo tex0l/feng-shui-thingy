@@ -1,0 +1,9 @@
+{
+  "ignore": [
+    "lib"
+  ],
+  "extends": [
+    "standard"
+  ],
+  "parser": "babel-eslint"
+}

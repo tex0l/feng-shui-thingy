@@ -1,0 +1,61 @@
+@import 'components/bagua-canvas';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feng-shui-app {
+  border-radius: 5px;
+  box-shadow: 0 0 10px transparentize($black, 0.5);
+  margin: {
+    left: 5%;
+    right: 5%;
+  }
+  position: relative;
+  padding: 5px;
+
+  .bagua-canvas-container {
+    @include bagua-canvas-container;
+  }
+
+  .menu {
+    height: 100%;
+    margin: {
+      bottom: 20px;
+      left: 10px;
+      right: 10px;
+      top: 20px;
+    }
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: calc(100% - 800px);
+    .menu-item {
+      position: relative;
+      width: 100%;
+      padding: {
+        bottom: 5px;
+        top: 5px;
+      }
+      background-color: $cyan;
+      border: {
+        radius: 5px;
+        width: 0;
+      }
+      &:hover {
+        background-color: lighten($cyan, 30%);
+      }
+      &:focus {
+        background-color: darken($cyan, 30%);
+      }
+    }
+  }
+}
+
