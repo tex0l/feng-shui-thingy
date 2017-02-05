@@ -14,6 +14,10 @@ export default {
       this.loadedPlan = null
       this.redraw()
     })
+    eventBus.$on('reset', () => {
+      this.points.splice(0)
+      this.redraw()
+    })
   },
   props: ['width', 'height'],
   data () {
@@ -96,7 +100,7 @@ export default {
     async handleDrag (index, event) {
       this.dragging = true
       event.preventDefault()
-      const {x, y} = this.calculateClickCoordinates({clientX: this.dragX, clientY: this.dragY}, true)
+      const {x, y} = this.calculateClickCoordinates({clientX: this.dragX, clientY: this.dragY})
       this.points[index].x = x
       this.points[index].y = y
       await this.redraw()

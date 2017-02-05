@@ -1,25 +1,27 @@
 @import 'components/bagua-canvas';
+@import './resources/latofonts';
 
 html,
 body {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  justify-content: center;
   margin: 0;
   overflow: hidden;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .feng-shui-app {
   border-radius: 5px;
   box-shadow: 0 0 10px transparentize($black, 0.5);
+  padding: 5px;
+  position: relative;
+
   margin: {
     left: 5%;
     right: 5%;
   }
-  position: relative;
-  padding: 5px;
 
   .bagua-canvas-container {
     @include bagua-canvas-container;
@@ -27,33 +29,53 @@ body {
 
   .menu {
     height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: calc(100% - 800px);
+
     margin: {
       bottom: 20px;
       left: 10px;
       right: 10px;
       top: 20px;
     }
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: calc(100% - 800px);
+
     .menu-item {
+      background-color: $light-blue;
+      cursor: pointer;
       position: relative;
+      text-align: center;
+      user-select: none;
       width: 100%;
-      padding: {
-        bottom: 5px;
-        top: 5px;
-      }
-      background-color: $cyan;
+
       border: {
         radius: 5px;
         width: 0;
       }
-      &:hover {
-        background-color: lighten($cyan, 30%);
+
+      font: {
+        family: Lato;
+        size: 14px;
+        weight: 400;
       }
-      &:focus {
-        background-color: darken($cyan, 30%);
+
+      margin: {
+        bottom: 10px;
+        top: 10px;
+      }
+
+      padding: {
+        bottom: 5px;
+        top: 5px;
+      }
+
+      &:hover {
+        background-color: lighten($light-blue, 5%);
+      }
+
+      &:active {
+        background-color: darken($light-blue, 5%);
       }
     }
   }

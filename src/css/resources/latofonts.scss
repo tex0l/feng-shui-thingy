@@ -1,0 +1,37 @@
+@mixin font-face-mixin($family, $url, $style: normal, $weight: normal, $format: 'woff2') {
+  @font-face {
+    font-family: $family;
+    src: url($url) format($format);
+    font-style: $style;
+    font-weight: $weight;
+  }
+}
+
+$font-family: 'LatoLatinWeb';
+
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Hairline.woff2', $weight: 100);
+@include font-face-mixin($font-family, 'fonts/LatoLatin-HairlineItalic.woff2', $weight: 100, $style: italic);
+
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Thin.woff2', $weight: 200);
+@include font-face-mixin($font-family, 'fonts/LatoLatin-ThinItalic.woff2', $weight: 200, $style: italic);
+
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Light.woff2', $weight: 300);
+@include font-face-mixin($font-family, 'fonts/LatoLatin-LightItalic.woff2', $weight: 300, $style: italic);
+
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Regular.woff2');
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Italic.woff2', $style: italic);
+
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Medium.woff2', $weight: 500);
+@include font-face-mixin($font-family, 'fonts/LatoLatin-MediumItalic.woff2', $weight: 500, $style: italic);
+
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Semibold.woff2', $weight: 600);
+@include font-face-mixin($font-family, 'fonts/LatoLatin-SemiboldItalic.woff2', $weight: 600, $style: italic);
+
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Bold.woff2', $weight: 700);
+@include font-face-mixin($font-family, 'fonts/LatoLatin-BoldItalic.woff2', $weight: 700, $style: italic);
+
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Heavy.woff2', $weight: 800);
+@include font-face-mixin($font-family, 'fonts/LatoLatin-HeavyItalic.woff2', $weight: 800, $style: italic);
+
+@include font-face-mixin($font-family, 'fonts/LatoLatin-Black.woff2', $weight: 900);
+@include font-face-mixin($font-family, 'fonts/LatoLatin-BlackItalic.woff2', $weight: 900, $style: italic);

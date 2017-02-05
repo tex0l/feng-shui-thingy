@@ -641,6 +641,10 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
+bluebird@^3.0.5:
+  version "3.4.7"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.4.7.tgz#f72d760be09b7f76d08ed8fae98b289a8d05fab3"
+
 boom@2.x.x:
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
@@ -915,6 +919,16 @@ cryptiles@2.x.x:
   dependencies:
     boom "2.x.x"
 
+css-color-list@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/css-color-list/-/css-color-list-0.0.1.tgz#8718e8695ae7a2cc8787be8715f1c008a7f28b15"
+  dependencies:
+    css-color-names "0.0.1"
+
+css-color-names@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.1.tgz#5d0548fa256456ede4a9a0c2ac7ab19d3eb1ad81"
+
 css-color-names@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.3.tgz#de0cef16f4d8aa8222a320d5b6d7e9bbada7b9f6"
@@ -1101,6 +1115,10 @@ detect-newline@2.X:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
 
+diff@^3.1.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-3.2.0.tgz#c9ce393a4b7cbd0b058a725c93df299027868ff9"
+
 doctrine@^1.2.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
@@ -1140,6 +1158,15 @@ ecc-jsbn@~0.1.1:
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
   dependencies:
     jsbn "~0.1.0"
+
+editorconfig@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/editorconfig/-/editorconfig-0.13.2.tgz#8e57926d9ee69ab6cb999f027c2171467acceb35"
+  dependencies:
+    bluebird "^3.0.5"
+    commander "^2.9.0"
+    lru-cache "^3.2.0"
+    sigmund "^1.0.1"
 
 electron-to-chromium@^1.2.1:
   version "1.2.1"
@@ -1711,7 +1738,7 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-globby@^6.0.0:
+globby@^6.0.0, globby@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/globby/-/globby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
   dependencies:
@@ -1799,7 +1826,17 @@ gulp-sourcemaps@^2.4.0:
     through2 "2.X"
     vinyl "1.X"
 
-gulp-util@^3.0, gulp-util@^3.0.0, gulp-util@^3.0.8:
+gulp-stylefmt@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-stylefmt/-/gulp-stylefmt-1.1.0.tgz#7aea00a0a9bd2fbd8a2482dc01f133edca303d52"
+  dependencies:
+    gulp-util "^3.0.7"
+    postcss "^5.0.21"
+    postcss-scss "^0.4.0"
+    stylefmt "^5.0.4"
+    through2 "^2.0.1"
+
+gulp-util@^3.0, gulp-util@^3.0.0, gulp-util@^3.0.7, gulp-util@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -2457,7 +2494,7 @@ lodash.uniq@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@^4.0.0, lodash@^4.1.0, lodash@^4.11.1, lodash@^4.2.0, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.1.0, lodash@^4.11.1, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -2491,6 +2528,12 @@ loud-rejection@^1.0.0:
 lru-cache@2:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
+
+lru-cache@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-3.2.0.tgz#71789b3b7f5399bec8565dda38aa30d2a097efee"
+  dependencies:
+    pseudomap "^1.0.1"
 
 lru-cache@^4.0.1:
   version "4.0.2"
@@ -3145,6 +3188,13 @@ postcss-selector-parser@^2.0.0, postcss-selector-parser@^2.1.1, postcss-selector
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
+postcss-sorting@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-2.0.1.tgz#3b7cbfd6cb6b0fdb81b470589952584ef32c32a5"
+  dependencies:
+    lodash "^4.17.4"
+    postcss "^5.2.10"
+
 postcss-svgo@^2.1.1:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/postcss-svgo/-/postcss-svgo-2.1.6.tgz#b6df18aa613b666e133f08adb5219c2684ac108d"
@@ -3587,7 +3637,7 @@ shelljs@^0.7.5:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
-sigmund@~1.0.0:
+sigmund@^1.0.1, sigmund@~1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/sigmund/-/sigmund-1.0.1.tgz#3ff21f198cad2175f9f3b781853fd94d0d19b590"
 
@@ -3733,6 +3783,10 @@ standard@^8.6.0:
     eslint-plugin-standard "~2.0.1"
     standard-engine "~5.2.0"
 
+stdin@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/stdin/-/stdin-0.0.1.tgz#d3041981aaec3dfdbc77a1b38d6372e38f5fb71e"
+
 stdout-stream@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/stdout-stream/-/stdout-stream-1.4.0.tgz#a2c7c8587e54d9427ea9edb3ac3f2cd522df378b"
@@ -3818,6 +3872,23 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
+stylefmt@^5.0.4:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/stylefmt/-/stylefmt-5.1.1.tgz#36d933fdf3a776f7fe95497b32a1404d1eb97b0f"
+  dependencies:
+    chalk "^1.1.3"
+    css-color-list "0.0.1"
+    diff "^3.1.0"
+    editorconfig "^0.13.2"
+    globby "^6.1.0"
+    minimist "^1.2.0"
+    postcss "^5.2.5"
+    postcss-scss "^0.4.0"
+    postcss-sorting "^2.0.1"
+    postcss-value-parser "^3.3.0"
+    stdin "0.0.1"
+    stylelint "^7.5.0"
+
 stylehacks@^2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/stylehacks/-/stylehacks-2.3.1.tgz#de49e8baa2e12b29c35b416b337094839bc97b35"
@@ -3859,7 +3930,7 @@ stylelint-selector-no-utility@^1.1.0:
     primer-utilities "^3.0.0"
     stylelint "^7.0.0"
 
-stylelint@^7.0.0, stylelint@^7.0.3, stylelint@^7.8.0:
+stylelint@^7.0.0, stylelint@^7.0.3, stylelint@^7.5.0, stylelint@^7.8.0:
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-7.8.0.tgz#ac701044ed03c44f7a9f73d4d5dc1bd1eaae12d1"
   dependencies:
@@ -3974,7 +4045,7 @@ text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
-through2@2.X, through2@^2.0.0:
+through2@2.X, through2@^2.0.0, through2@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
   dependencies:

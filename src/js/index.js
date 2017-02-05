@@ -38,7 +38,9 @@ const main = async () => {
           },
           {
             name: 'Effacer les points',
-            action: () => {}
+            action: () => {
+              eventBus.$emit('reset')
+            }
           }
         ]
       }
