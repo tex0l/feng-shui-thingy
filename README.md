@@ -1,0 +1,2 @@
+# Feng-shui app
+I don't know a thing about Feng-shui, and I don't think much of it. But someone asked me to make an app for finding the center of gravity of a floor plan and displaying a "bagua" on top of it. That's what this project is.
