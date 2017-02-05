@@ -21,11 +21,15 @@ export default {
     })
     eventBus.$on('export', () => {
       this.points.forEach(point => this.drawPoint(point))
-      this.drawPoint(this.gravityCenter, {color: '#ff804a', size: 15, width: 3})
+      if (this.gravityCenter) this.drawPoint(this.gravityCenter, {color: '#ff804a', size: 15, width: 3})
+      if (this.northPoint) this.drawPoint(this.northPoint, {color: '#ff0000', size: 15, width: 3})
       this.$refs.canvas.toBlob(blob => {
         fileSaver.saveAs(blob, 'bagua.png')
         this.redraw()
       })
+    })
+    eventBus.$on('place-north', () => {
+      this.placingNorth = true
     })
   },
   props: ['width', 'height'],
@@ -34,7 +38,9 @@ export default {
       plan: './resources/plan.gif',
       loadedPlan: null,
       points: [],
-      gravityCenter: false
+      gravityCenter: false,
+      placingNorth: false,
+      northPoint: false
     }
   },
   methods: {
@@ -101,12 +107,21 @@ export default {
       this.calculateGravityCenter()
     },
     async handleClick (event) {
-      this.points.push(this.calculateClickCoordinates(event))
+      if (this.placingNorth) {
+        this.northPoint = this.calculateClickCoordinates(event)
+        this.placingNorth = false
+      } else this.points.push(this.calculateClickCoordinates(event))
       await this.redraw()
     },
     async handleClickOnPlus (index) {
       if (!this.dragging) {
         this.points.splice(index, 1)
+        await this.redraw()
+      }
+    },
+    async handleClickOnPlusNorth () {
+      if (!this.dragging) {
+        this.northPoint = false
         await this.redraw()
       }
     },
@@ -116,6 +131,14 @@ export default {
       const {x, y} = this.calculateClickCoordinates({clientX: this.dragX, clientY: this.dragY})
       this.points[index].x = x
       this.points[index].y = y
+      await this.redraw()
+    },
+    async handleDragNorth (event) {
+      this.dragging = true
+      event.preventDefault()
+      const {x, y} = this.calculateClickCoordinates({clientX: this.dragX, clientY: this.dragY})
+      this.northPoint.x = x
+      this.northPoint.y = y
       await this.redraw()
     },
     calculateClickCoordinates (event) {
@@ -156,14 +179,19 @@ export default {
             :height="height">
     </canvas>
     <div ref="overlay" class="overlay" @click="handleClick($event)">
-        <img v-for="(point, index) in points" 
-             src="./resources/plus.svg" 
-             :style="{left: point.x + 'px', top: point.y + 'px'}" 
+        <img v-for="(point, index) in points"
+             src="./resources/plus.svg"
+             :style="{left: point.x + 'px', top: point.y + 'px'}"
              @drag="handleDrag(index, $event)"
              @dragend="dragging = false; redraw()"
              @click.stop.prevent="handleClickOnPlus(index)"/>
         <img v-if="gravityCenter" src="./resources/plus.svg"
              :style="{left: gravityCenter.x + 'px', top: gravityCenter.y + 'px'}"/>
+        <img v-if="northPoint" src="./resources/plus.svg"
+             :style="{left: northPoint.x + 'px', top: northPoint.y + 'px'}"
+             @click.stop.prevent="handleClickOnPlusNorth(index)"
+             @drag="handleDragNorth($event)"
+             @dragend="dragging = false; redraw()"/>
     </div>
 </div>`
 }

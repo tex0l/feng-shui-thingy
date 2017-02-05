@@ -43,6 +43,12 @@ const main = async () => {
             }
           },
           {
+            name: 'Placer le nord et le bagua',
+            action: () => {
+              eventBus.$emit('place-north')
+            }
+          },
+          {
             name: 'Exporter',
             action: () => {
               eventBus.$emit('export')
