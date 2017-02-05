@@ -1,5 +1,6 @@
 'use strict'
 /* global Image, Path2D */
+import fileSaver from 'file-saver'
 import eventBus from './eventBus'
 
 export default {
@@ -17,6 +18,14 @@ export default {
     eventBus.$on('reset', () => {
       this.points.splice(0)
       this.redraw()
+    })
+    eventBus.$on('export', () => {
+      this.points.forEach(point => this.drawPoint(point))
+      this.drawPoint(this.gravityCenter, {color: '#ff804a', size: 15, width: 3})
+      this.$refs.canvas.toBlob(blob => {
+        fileSaver.saveAs(blob, 'bagua.png')
+        this.redraw()
+      })
     })
   },
   props: ['width', 'height'],
@@ -53,21 +62,22 @@ export default {
       if (ratio < 1) context.drawImage(image, (1 - ratio) * this.width / 2, 0, this.width * ratio, this.height)
       else context.drawImage(image, 0, (1 - 1 / ratio) * this.height / 2, this.width, this.height / ratio)
     },
-    drawPoint ({x, y}) {
+    drawPoint ({x, y}, {color = '#000', width = 2, size = 10} = {}) {
       const context2D = this.$refs.canvas.getContext('2d')
 
       context2D.beginPath()
-      context2D.moveTo(x, y - 5)
-      context2D.lineTo(x, y + 5)
-      context2D.moveTo(x - 5, y)
-      context2D.lineTo(x + 5, y)
+      context2D.moveTo(x, y - size / 2)
+      context2D.lineTo(x, y + size / 2)
+      context2D.moveTo(x - size / 2, y)
+      context2D.lineTo(x + size / 2, y)
+      context2D.lineWidth = width
+      context2D.strokeStyle = color
       context2D.stroke()
     },
-    drawPath () {
+    drawPath ({width = 1, fillColor = 'rgba(43, 159, 223, 0.5)', lineColor = '#000'} = {}) {
       if (this.points.length) {
         const context2D = this.$refs.canvas.getContext('2d')
         const {x: initialX, y: initialY} = this.points[0]
-        context2D.fillStyle = 'rgba(43, 159, 223, 0.5)'
         const path = new Path2D()
         path.moveTo(initialX, initialY)
 
@@ -76,7 +86,10 @@ export default {
           path.lineTo(x, y)
         }
         path.closePath()
+        context2D.lineWidth = width
+        context2D.strokeStyle = lineColor
         context2D.stroke(path)
+        context2D.fillStyle = fillColor
         context2D.fill(path)
       }
     },

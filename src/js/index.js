@@ -41,6 +41,12 @@ const main = async () => {
             action: () => {
               eventBus.$emit('reset')
             }
+          },
+          {
+            name: 'Exporter',
+            action: () => {
+              eventBus.$emit('export')
+            }
           }
         ]
       }
