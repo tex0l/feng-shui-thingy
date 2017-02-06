@@ -15,12 +15,23 @@
     height: 600px;
     width: 800px;
     z-index: 1;
-    img {
-      height: 10px;
-      margin-left: -5px;
-      margin-top: -5px;
+
+    @mixin point ($size: 10px) {
+      background-color: transparent;
+      height: $size;
+      margin-left: - $size / 2;
+      margin-top: - $size / 2;
       position: absolute;
-      width: 10px;
+      width: $size;
+      z-index: 2;
+    }
+
+    .point {
+      @include point;
+    }
+
+    .gravity-center {
+      @include point($size: 15px);
     }
   }
 }
